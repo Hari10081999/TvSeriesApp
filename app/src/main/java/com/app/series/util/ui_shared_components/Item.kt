@@ -64,7 +64,9 @@ fun Item(
         modifier = modifier
             .clip(RoundedCornerShape(Radius.dp))
             .clickable {
-
+                navController.navigate(
+                    "${Route.SERIES_DETAILS_SCREEN}?id=${series.id}&type=${series.mediaType}&category=${series.category}"
+                )
             }
             .background(MaterialTheme.colorScheme.surfaceVariant)
     ) {

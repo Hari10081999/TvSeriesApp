@@ -1,5 +1,5 @@
 ## About The App
-With this app you can get TV series list from given API Url.
+With this app you can get TV series list and details from given API Url.
 
 ## Features
 - Jetpack Compose

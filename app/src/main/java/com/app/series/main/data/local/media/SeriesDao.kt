@@ -26,19 +26,19 @@ interface SeriesDao {
 
     @Query(
         """
-            DELETE FROM seriesEntity 
+            DELETE FROM seriesentity 
             WHERE mediaType = :mediaType AND category = :category
         """
     )
     suspend fun deleteMediaByTypeAndCategory(mediaType: String, category: String)
 
-    @Query("SELECT * FROM seriesEntity WHERE id = :id")
+    @Query("SELECT * FROM seriesentity WHERE id = :id")
     suspend fun getSeriesById(id: Int): SeriesEntity
 
     @Query(
         """
             SELECT * 
-            FROM seriesEntity 
+            FROM seriesentity 
             WHERE mediaType = :mediaType AND category = :category
         """
     )
@@ -46,6 +46,23 @@ interface SeriesDao {
         mediaType: String, category: String
     ): List<SeriesEntity>
 
+    @Query(
+        """
+            DELETE FROM seriesentity 
+            WHERE category = :category
+        """
+    )
+    suspend fun deleteTrendingMediaList(category: String)
+
+
+    @Query(
+        """
+            SELECT * 
+            FROM seriesentity 
+            WHERE category = :category
+        """
+    )
+    suspend fun getTrendingMediaList(category: String): List<SeriesEntity>
 
 
 }

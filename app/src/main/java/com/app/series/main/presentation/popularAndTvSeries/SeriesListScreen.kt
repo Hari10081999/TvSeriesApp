@@ -15,7 +15,6 @@ import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -32,15 +31,12 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import com.app.series.R
-import com.app.series.main.domain.models.Series
 import com.app.series.main.presentation.main.MainUiEvents
 import com.app.series.main.presentation.main.MainUiState
 import com.app.series.util.ui_shared_components.ListShimmerEffect
-import com.app.series.util.ui_shared_components.MediaItem
+import com.app.series.util.ui_shared_components.SeriesItem
 import com.app.series.util.ui_shared_components.NonFocusedTopBar
 import com.app.series.util.ui_shared_components.header
 import com.app.series.theme.BigRadius
@@ -131,7 +127,8 @@ fun SeriesListScreen(
 
                 items(mediaList.size) { i ->
 
-                    MediaItem(
+                    SeriesItem(
+                        navController = navController,
                         series = mediaList[i],
                         mainUiState = mainUiState,
                         onEvent = onEvent

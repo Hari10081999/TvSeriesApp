@@ -22,7 +22,6 @@ interface SeriesRepository {
         type: String,
         category: String,
         page: Int): Flow<Resource<List<Series>>>
-
 }
 
 

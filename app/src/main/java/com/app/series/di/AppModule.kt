@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.app.series.main.data.local.media.SeriesDatabase
 import com.app.series.main.data.remote.api.SeriesApi
 import com.app.series.main.data.remote.api.SeriesApi.Companion.BASE_URL
+import com.app.series.series_details.data.remote.api.DetailsApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -47,6 +48,17 @@ class AppModule {
             .client(client)
             .build()
             .create(SeriesApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideExtraDetailsApi() : DetailsApi {
+        return Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL)
+            .client(client)
+            .build()
+            .create(DetailsApi::class.java)
     }
 
 }

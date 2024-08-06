@@ -54,11 +54,13 @@ import com.app.series.theme.Radius
 import com.app.series.theme.RadiusContainer
 import com.app.series.ui.theme.font
 import com.app.series.util.Constants
+import com.app.series.util.Route
 import com.app.series.util.ui_shared_components.RatingBar
 import com.app.series.util.ui_shared_components.genresProvider
 
 @Composable
 fun SearchMediaItem(
+    navController: NavController,
     series: Series,
     mainUiState: MainUiState,
     modifier: Modifier = Modifier,
@@ -103,7 +105,10 @@ fun SearchMediaItem(
                     )
                 )
                 .clickable {
-
+                    onEvent(SearchUiEvents.OnSearchedItemClick(series))
+                    navController.navigate(
+                        "${Route.SERIES_DETAILS_SCREEN}?id=${series.id}&type=${series.mediaType}&category=${series.category}"
+                    )
                 }
         ) {
 

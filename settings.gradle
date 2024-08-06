@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Series App Hari"
+rootProject.name = "Tv Series App"
 include ':app'

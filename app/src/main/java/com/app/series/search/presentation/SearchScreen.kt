@@ -63,6 +63,7 @@ fun SearchScreen(
 
             items(searchScreenState.searchList.size) {
                 SearchMediaItem(
+                    navController = navController,
                     series = searchScreenState.searchList[it],
                     mainUiState = mainUiState,
                     onEvent = searchViewModel::onEvent
